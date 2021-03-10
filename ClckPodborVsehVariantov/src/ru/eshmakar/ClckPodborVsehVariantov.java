@@ -8,16 +8,17 @@ import java.util.Scanner;
 
 public class ClckPodborVsehVariantov {
     public static void main(String[] args) {
+        //TdCz6
         int count = 0;
         String url;
         System.out.print("Работу начал...\n");
         for (char nol = 'T'; nol <= 'z'; nol++) {
             if (propustit(nol)) continue;
-            for (char nol2 = 'Y'; nol2 <= 'z'; nol2++) {
+            for (char nol2 = 'd'; nol2 <= 'z'; nol2++) {
                 if (propustit(nol2)) continue;
-                for (char nol3 = 'E'; nol3 <= 'z'; nol3++) {
+                for (char nol3 = 'N'; nol3 <= 'z'; nol3++) {
                     if (propustit(nol3)) continue;
-                    for (char nol4 = '0'; nol4 <= 'z'; nol4++) {
+                    for (char nol4 = 'a'; nol4 <= 'z'; nol4++) {
                         if (propustit(nol4)) continue;
                         for (char nol5 = '0'; nol5 <= 'z'; nol5++) {
                             if (propustit(nol5)) continue;
@@ -29,8 +30,11 @@ public class ClckPodborVsehVariantov {
                                 String responseBody = scanner.useDelimiter("\\A").next();
                                 String titleFromSite = responseBody.substring(responseBody.indexOf("<title>") + 7, responseBody.indexOf("</title>"));
 
-                                if (skryvat(titleFromSite))
-                                    System.out.printf("%d. %s - %s\n", ++count, url, titleFromSite);
+                                if (skryvat(titleFromSite)) {
+                                    System.out.printf("%d. %s - %s\n", ++count, url, titleFromSite.trim());
+                                    scanner.close();
+                                    System.gc();
+                                }
 
                             } catch (Exception ignored) {
                             } finally {
@@ -76,6 +80,6 @@ public class ClckPodborVsehVariantov {
                 && !s.contains("Ташкент") && !s.equals(" ") && !s.contains("Redirecting...")
                 && !s.equals("Get Laid Tonight") && !s.equals("Ой!")
                 && !s.equals("PravSistem.Club") && !s.equals("Warning! | There might be a problem with the requested link")
-                && !s.contains("Квартиры свободные") && !s.equals("Статус заказа");
+                && !s.contains("Квартиры свободные") && !s.equals("Статус заказа") && !s.equals("Закрытый мужской клуб");
     }
 }
